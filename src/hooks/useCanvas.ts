@@ -1,9 +1,10 @@
 
 import {useRef, useEffect, useCallback} from 'react'
-import {createParticles, Particle} from "../canvas/draw.ts";
+import {createParticles} from "../canvas/draw.ts";
 import {rule} from "../canvas/particle_movement.ts";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/store.ts";
+import {Particle} from "../canvas/Particle.ts";
 
 
 
@@ -25,7 +26,7 @@ const useCanvas = (draw: (ctx: CanvasRenderingContext2D, deltaTime: number, part
     const initParticles = (ctx: CanvasRenderingContext2D) => {
         particles.current.length = 0;
         for (let i = 0; i < optionsRef.current.particleGroups.length; i++) {
-            groups.current[i] = createParticles(ctx, particles.current, optionsRef.current.particleGroups[i].amount, optionsRef.current.particleGroups[i].color);
+            groups.current[i] = createParticles(ctx, particles.current, optionsRef.current.particleGroups[i].amount, optionsRef.current.particleGroups[i].radius, optionsRef.current.particleGroups[i].color);
         }
     }
 

@@ -5,9 +5,9 @@ const initialState: Options = {
     height: window.innerHeight,
     width: window.innerWidth,
     particleGroups: [
-        {amount: 400, color: "#2b82b2"},
-        {amount: 300, color: "#ff6e6e"},
-        {amount: 500, color: "#6effdd"}
+        {amount: 400, color: "#2b82b2", radius: 1},
+        {amount: 300, color: "#ff6e6e", radius: 1},
+        {amount: 400, color: "#6effdd", radius: 1}
     ],
     rules : [
         {group1: 0, group2: 0, weight: 20},

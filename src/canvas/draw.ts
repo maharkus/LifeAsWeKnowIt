@@ -1,26 +1,8 @@
-
+import {Particle} from "./Particle.ts";
 
 
 const randomCanvas = (ctx: CanvasRenderingContext2D) => {
     return Math.floor(Math.random() * ctx.canvas.width);
-}
-
-export class Particle {
-    x: number;
-    y: number;
-    c: string;
-    r: number;
-    vx: number;
-    vy: number;
-    constructor(x:number, y:number, c:string, r:number) {
-        this.x = x;
-        this.y = y;
-        this.c = c;
-        this.r = r;
-        this.vx = 0;
-        this.vy = 0;
-
-    }
 }
 
 export const drawCircle = (ctx: CanvasRenderingContext2D, x:number,y:number,c:string,r:number) => {
@@ -32,10 +14,10 @@ export const drawCircle = (ctx: CanvasRenderingContext2D, x:number,y:number,c:st
     ctx.fill();
 }
 
-export const createParticles = (ctx: CanvasRenderingContext2D, particles: Particle[], amount: number, color: string) => {
+export const createParticles = (ctx: CanvasRenderingContext2D, particles: Particle[], amount: number, radius: number, color: string) => {
     const group = [];
     for(let i = 0; i < amount; i++){
-        group.push(new Particle(randomCanvas(ctx), randomCanvas(ctx), color, 1.5));
+        group.push(new Particle(randomCanvas(ctx), randomCanvas(ctx), 0, 0, radius, color));
         particles.push(group[i]);
     }
     return group;

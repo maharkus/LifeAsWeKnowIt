@@ -25,6 +25,15 @@ export const Settings = ({fps} : Props) => {
         dispatch(setOptions(newOptions));
     }
 
+    const randomizeValues = () => {
+        const newOptions = {...options};
+        newOptions.rules = newOptions.rules.map((rule) => ({
+            ...rule,
+            weight: Math.random() * 40 - 20
+        }));
+        dispatch(setOptions(newOptions));
+    }
+
     return (
         <>
 
@@ -38,6 +47,9 @@ export const Settings = ({fps} : Props) => {
                     {options.rules.map((rule, index) => (
                         <Slider key={index} label={rule.group1 + " attracted by " + rule.group2} value={rule.weight} onChange={(newValue) => handleSliderChange(index, newValue)} />
                     ))}
+                    <button onClick={randomizeValues} className={"text-white z-10"}>
+                        Randomize
+                    </button>
                 </div>
             )}
         </>

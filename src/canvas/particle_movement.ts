@@ -3,22 +3,22 @@ import {Particle} from "./draw.ts";
 export const rule = (ctx: CanvasRenderingContext2D, group1: Particle[], group2: Particle[], g: number, deltaTime:number) =>{
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
+    const thresholdSquared = 150 * 150;
     for(let i = 0; i < group1.length; i++) {
 
         let fx = 0;
         let fy = 0;
         const a = group1[i]
+        const radiusSquared = a.r * a.r;
         for (let j = 0; j < group2.length; j++) {
             const b = group2[j]
-
-
 
             const dx = (a.x - b.x + width / 2) % width - width / 2;
             const dy = (a.y - b.y + height / 2) % height - height / 2;
 
-            const d = Math.sqrt(dx * dx + dy * dy);
-            if (d > a.r && d < 150){
-                const F = g / d;
+            const distanceSquared = dx * dx + dy * dy;
+            if (distanceSquared > radiusSquared && distanceSquared < thresholdSquared){
+                const F = g / Math.sqrt(distanceSquared);
                 fx += (F * dx);
                 fy += (F * dy);
             }
