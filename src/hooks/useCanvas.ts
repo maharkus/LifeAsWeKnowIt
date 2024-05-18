@@ -12,7 +12,7 @@ import {calculateFps} from "../functions/helpers.ts";
 
 
 
-const useCanvas = (draw: (ctx: CanvasRenderingContext2D, particles: Particle[], cells: Cell[][]) => void) => {
+const useCanvas = (draw: (ctx: CanvasRenderingContext2D, particles: Particle[], cells: Cell[][], cellSize: number) => void) => {
 
     const canvasRef = useRef<HTMLCanvasElement | null>(null)
     const drawCallback = useCallback(draw, [draw]);
@@ -31,7 +31,7 @@ const useCanvas = (draw: (ctx: CanvasRenderingContext2D, particles: Particle[], 
     const initParticles = (ctx: CanvasRenderingContext2D) => {
         particles.current.length = 0;
         for (let i = 0; i < optionsRef.current.particleGroups.length; i++) {
-            groups.current[i] = createParticles(ctx, particles.current, optionsRef.current.particleGroups[i].amount, optionsRef.current.particleGroups[i].radius, optionsRef.current.particleGroups[i].color);
+            groups.current[i] = createParticles(ctx, particles.current, optionsRef.current.particleGroups[i], i);
         }
     }
 
@@ -68,7 +68,7 @@ const useCanvas = (draw: (ctx: CanvasRenderingContext2D, particles: Particle[], 
                 deltaTime = (timestamp - lastTimestamp) / 1000;
             }
 
-            drawCallback(ctx, particles.current, cells.current);
+            drawCallback(ctx, particles.current, cells.current, optionsRef.current.cellSize);
             applyRules(ctx, deltaTime);
 
             fps = 1 / deltaTime;

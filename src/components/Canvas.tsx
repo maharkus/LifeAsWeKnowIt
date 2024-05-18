@@ -6,7 +6,7 @@ import {Cell} from "../canvas/Cell.ts";
 
 
 interface Props {
-    draw: (ctx: CanvasRenderingContext2D, particles: Particle[], cells: Cell[][])=>void;
+    draw: (ctx: CanvasRenderingContext2D, particles: Particle[], cells: Cell[][], cellSize: number)=>void;
 }
 export const Canvas = ({draw}: Props) => {
     const options = useSelector((state: RootState) => state.options);

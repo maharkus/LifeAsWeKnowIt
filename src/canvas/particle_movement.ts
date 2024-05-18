@@ -11,6 +11,7 @@ export const rule = (ctx: CanvasRenderingContext2D, group1: Particle[], group2: 
         let fy = 0;
         const a = group1[i]
         const radiusSquared = a.r * a.r;
+
         for (let j = 0; j < group2.length; j++) {
             const b = group2[j]
 
