@@ -1,11 +1,12 @@
 import useCanvas from "../hooks/useCanvas.ts";
-import {Particle} from "../canvas/draw.ts";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/store.ts";
+import {Particle} from "../canvas/Particle.ts";
+import {Cell} from "../canvas/Cell.ts";
 
 
 interface Props {
-    draw: (ctx: CanvasRenderingContext2D, deltaTime: number, particles: Particle[])=>void;
+    draw: (ctx: CanvasRenderingContext2D, particles: Particle[], cells: Cell[][])=>void;
 }
 export const Canvas = ({draw}: Props) => {
     const options = useSelector((state: RootState) => state.options);

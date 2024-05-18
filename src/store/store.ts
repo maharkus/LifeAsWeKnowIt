@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import optionsReducer from './optionsSlice';
+import fpsReducer from './fpsSlice.ts';
 
 export const store = configureStore({
     reducer: {
         options: optionsReducer,
+        fps: fpsReducer,
     },
 });
 

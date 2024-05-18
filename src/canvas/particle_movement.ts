@@ -1,4 +1,5 @@
-import {Particle} from "./draw.ts";
+import {Particle} from "./Particle.ts";
+
 
 export const rule = (ctx: CanvasRenderingContext2D, group1: Particle[], group2: Particle[], g: number, deltaTime:number) =>{
     const width = ctx.canvas.width;

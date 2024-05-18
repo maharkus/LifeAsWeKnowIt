@@ -4,13 +4,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store/store.ts";
 import {setOptions} from "../store/optionsSlice.ts";
 
-interface Props {
-    fps: number;
-}
-
-export const Settings = ({fps} : Props) => {
+export const Settings = () => {
     const [isMenuOpen, setMenuOpen] = useState(true);
     const options = useSelector((state: RootState) => state.options);
+    const fps = useSelector((state: RootState) => state.fps);
     const dispatch = useDispatch();
 
     const toggleMenu = () => {
