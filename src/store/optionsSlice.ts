@@ -7,7 +7,7 @@ const initialState: Options = {
     cellSize: 100,
     particleGroups: [
         {amount: 400, color: "#2b82b2", radius: 1},
-        {amount: 300, color: "#ff6e6e", radius: 1},
+        {amount: 400, color: "#ff6e6e", radius: 1},
         {amount: 400, color: "#6effdd", radius: 1}
     ],
     rules : [

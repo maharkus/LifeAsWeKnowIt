@@ -10,8 +10,6 @@ export const drawCircle = (ctx: CanvasRenderingContext2D, x:number,y:number,c:st
     ctx.fillStyle = c;
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = c;
     ctx.fill();
 }
 
